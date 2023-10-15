@@ -3,7 +3,7 @@ import {} from 'react'
 function ExcluirPedido (){
   return(
     <>
-    <h1>ExcluirPedido</h1>
+    <h1>ExcluirProduto</h1>
     </>
   )
 }

@@ -7,13 +7,12 @@ import Error from './routes/Error.jsx'
 import ExcluirPedido from './routes/ExcluirPedido.jsx'
 import ExcluirProduto from './routes/ExcluirProduto.jsx'
 import Home from './routes/Home.jsx'
-import Inserir from './routes/Inserir.jsx'
 import InserirPedido from './routes/InserirPedido.jsx' 
 import Login from './routes/Login.jsx'
 import Pedido from './routes/Pedido.jsx'
 import Produtos from  './routes/Produtos.jsx'
 import Sobre from './routes/Sobre.jsx'
-import Nav from './componentes/Nav'
+import Nav from './components/Nav.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router=createBrowserRouter([
@@ -21,6 +20,7 @@ const router=createBrowserRouter([
   
   path:'/',
   element:<App/>,
+  errorElement: <Error />,
   
   
   
@@ -32,12 +32,13 @@ const router=createBrowserRouter([
       {path: '/Error', element:<Error/>},
       {path: '/ExcluirPedido', element:<ExcluirPedido/>},
       {path: '/ExcluirProduto', element:<ExcluirProduto/>},  
-      {path: '/Inserir', element:<Inserir/>},          
       {path: '/InserirPedido', element:<InserirPedido/>},
       {path: '/Login', element:<Login/>},
       {path: '/Pedido', element:<Pedido/>},
       {path: '/Produtos', element:<Produtos/>},
       {path: '/Sobre', element:<Sobre/>},
+      {path: '/EditarProduto/Produtos/:id', element: <EditarProduto />},
+      {path: '/ExcluirProduto/Produtos/:id', element: <ExcluirProduto />},
     ],
   },
 ]);

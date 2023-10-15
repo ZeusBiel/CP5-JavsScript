@@ -1,6 +1,6 @@
 import {} from 'react';
 import { Link , useNavigate} from 'react-router-dom';
-import { ListaProdutos } from '../componentes/ListaProdutos';
+import { ListaProdutos } from '../components/ListaProdutos';
 import { GrFormEdit as Editar } from 'react-icons/gr';
 import { RiDeleteBin2Fill as Excluir } from 'react-icons/ri';
 
@@ -40,11 +40,11 @@ function Produtos() {
                   <td>
                     {' '}
                     {/*Link para chamar a tela de editar produtos */}
-                    <Link to={`/editar/produtos/${item.id}`}>
+                    <Link to={`/editarproduto/produtos/${item.id}`}>
                       <Editar />
                     </Link>{' '}
                     | {/*Link para chamar a tela de excluir produtos */}
-                    <Link to={`/excluir/produtos/${item.id}`}>
+                    <Link to={`/excluirproduto/produtos/${item.id}`}>
                       <Excluir />
                       {/*espaço entre os links '' */}
                     </Link>{' '}

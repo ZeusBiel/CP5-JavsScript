@@ -1,95 +1,56 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ListaProdutos } from '../components/ListaProdutos';
-/* É através dele que se conseguirá fazer a navegação entre as diferentes rotas de uma aplicação. Declaramos ele atribuindo o hook a uma variável e depois invocando-a, passando a rota do destino como parâmetro obrigatório, conforme exemplo: */
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AiOutlinePlusCircle as Add } from 'react-icons/ai';
+import { GrFormEdit as Editar } from 'react-icons/gr';
+import { RiDeleteBin2Fill as Excluir } from 'react-icons/ri';
 
+function Pedido() {
+  const [carrinho, setCarrinho] = useState([]); // Estado do carrinho
 
-function InserirPedido() {
-  /*Hooks - navigate */
-  const navigate = useNavigate();
-
-  //Gerando um novo ID
-  let novoId = ListaProdutos[ListaProdutos.length - 1].id + 1;
-
-  /*Hooks - useState */
-  const [produto, setProduto] = useState({
-    id: novoId,
-    nome: '',
-    desc: '',
-    valor: '',
-  });
-
-  /*funções */
-
-  const handleSubmit = (e) => {
-    /*serve para prevenir o comportamento padrão de um evento */
-    e.preventDefault();
-    /*puxa tudo que estiver na lista de produtos */
-    ListaProdutos.push(produto);
-    navigate('/produtos');
-  };
-
-  const handleChange = (e) => {
-    /*serve para prevenir o comportamento padrão de um evento */
-    e.preventDefault();
-    //Destructuring
-    const { name, value } = e.target;
-    //Através da função set do useState, vamos adicionar o valor(value), na propriedade name que é a mesma que foi declarada no useState produto.
-    //Utilize o SPREAD, para tornar a função mais simples!!
-    setProduto({ ...produto, [name]: value });
+  // Função para adicionar um item ao carrinho
+  const adicionarAoCarrinho = (item) => {
+    setCarrinho([...carrinho, item]);
   };
 
   return (
-    <section>
-      <h1>Cadastro de Produtos</h1>
-      {/*chando a função handleSubmit dentro do form */}
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>PRODUTO</legend>
-          <p>
-            <label htmlFor="idNome"> Nome do Produto:</label>
-            <input
-              type="text"
-              name="nome"
-              id="idNome"
-           
-              value={produto.nome}
-              /*chamando a função handleChange dentro do input */
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            <label htmlFor="idDesc">Descrição Produto:</label>
-            <input
-              type="text"
-              name="desc"
-              id="idDesc"
+    <>
+      <h1>Pedidos</h1>
+      {ListaProdutos.map((item, indice) => (
+        <tr key={indice}>
+          <td>{item.id}</td>
+          <td>{item.nome}</td>
+          <td>{item.desc}</td>
+          <td>{item.valor}</td>
+          <td>
+            <button onClick={() => adicionarAoCarrinho(item)}>
               
-              value={produto.desc}
-              /*chamando a função handleChange dentro do input */
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            <label htmlFor="idValor"> Valor do Produto:</label>
-            <input
-              type="text"
-              name="valor"
-              id="idValor"
-              
-              value={produto.valor}
-              /*chamando a função handleChange dentro do input */
-              onChange={handleChange}
-            />
-          </p>
-          <p>
-            <button type="submit">
-              CADASTRAR
+              <Add />
+
             </button>
-          </p>
-        </fieldset>
-      </form>
-    </section>
+          </td>
+          <td>
+          <Link to={`/editarpedido/produtos/${item.id}`}>
+            <Editar />
+            </Link>{' '}
+          <Link to={`/excluirproduto/produtos/${item.id}`}>
+            <Excluir />
+            {/*espaço entre os links '' */}
+          </Link>{' '}
+          </td>
+        </tr>
+      ))}
+
+      <h2>Carrinho</h2>
+      <ul>
+        {carrinho.map((item, indice) => (
+          <li key={indice}>
+            {item.nome} - R$ {item.valor}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }
-export default InserirPedido;
+
+export default Pedido;

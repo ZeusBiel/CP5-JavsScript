@@ -16,6 +16,7 @@ function Nav() {
           <ul>
             <li><a><Link to="/">Home</Link></a></li>
             <li><a><Link to="/Produtos">Produtos</Link></a></li>
+            <li><a><Link to="/Pedido">Pedido</Link></a></li>
             <li><a><Link to="/Sobre">Sobre</Link></a></li>
             <li><a><Link to="/Login">Login</Link></a></li>
           </ul>

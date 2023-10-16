@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
-import { ListaProdutos } from '../components/ListaProdutos';
-import { Link, useNavigate } from 'react-router-dom';
-import { AiOutlinePlusCircle as Add } from 'react-icons/ai';
+import React, { } from 'react';
+import { Link } from 'react-router-dom';
 
 function Pedido() {
-  const [carrinho, setCarrinho] = useState([]); // Estado do carrinho
-
-  // Função para adicionar um item ao carrinho
-  const adicionarAoCarrinho = (item) => {
-    setCarrinho([...carrinho, item]);
-  };
 
   return (
     <>

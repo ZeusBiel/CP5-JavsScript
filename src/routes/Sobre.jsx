@@ -18,17 +18,20 @@ function Sobre() {
 
   return (
     <>
-      <h1>Sobr</h1>
+      <h1>Sobre</h1>
       <div className="slideshow-container">
         <Slider {...settings}>
           <div>
             <img src={lucas} alt="Imagem 1" />
+            <p>Lucas Vinicius</p>
           </div>
           <div>
             <img src={riqueto} alt="Imagem 2" />
+            <p>Gabriel Riqueto</p>
           </div>
           <div>
             <img src={oliveira} alt="Imagem 3" />
+            <p>Gabriel Oliveira</p>
           </div>
           {/* Adicione mais imagens conforme necessário */}
         </Slider>
